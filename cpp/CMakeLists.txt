@@ -5,7 +5,7 @@ SET(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake_modules/" ${CMAKE_MODUL
 
 # ROOTs
 SET(EIGEN_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/eigen")
-SET(CERES_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/build-ceres-solver/")
+SET(CERES_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/ceres/build")
 SET(CGAL_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/CGAL/")
 #SET(PANGOLIN_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/3rdParty/build-Pangolin/src")
 
@@ -33,7 +33,7 @@ INCLUDE_DIRECTORIES( thirdparty/CLI11/include/ )
 # tinyply
 INCLUDE_DIRECTORIES( thirdparty/tinyply/ )
 ADD_LIBRARY( tinyply ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/tinyply/tinyply/tinyply.cpp )
-TARGET_COMPILE_OPTIONS( tinyply PRIVATE -std=c++11 )
+TARGET_COMPILE_OPTIONS( tinyply PRIVATE -std=c++11 -fPIC)
 
 ########## CUSTOM LIBRARIES ##########
 
@@ -43,7 +43,7 @@ INCLUDE_DIRECTORIES( include/ )
 SET( LIB_NAME pcd_lib )
 ADD_LIBRARY( ${LIB_NAME} ${CMAKE_CURRENT_SOURCE_DIR}/include/pcd/PointCloudData.cpp )
 TARGET_LINK_LIBRARIES( ${LIB_NAME} tinyply )
-TARGET_COMPILE_OPTIONS( ${LIB_NAME} PRIVATE -std=c++11 )
+TARGET_COMPILE_OPTIONS( ${LIB_NAME} PRIVATE -std=c++11 -fPIC)
 
 ########## DIRECTORIES ##########
 
